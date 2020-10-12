@@ -1,0 +1,12 @@
+{
+  "name": "gametime",
+  "displayName": "gametime",
+  "expo": {
+    "name": "gametime",
+    "slug": "gametime",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
