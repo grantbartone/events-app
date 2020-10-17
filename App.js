@@ -1,5 +1,7 @@
+import { StatusBar } from 'expo-status-bar'
 import React, { useState, useCallback } from 'react'
 import { View, StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { SearchBar } from 'react-native-elements'
 import { throttle } from 'lodash'
 import SearchResults from './components/SearchResults'
@@ -30,15 +32,18 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <SearchBar
-        containerStyle={styles.searchContainer}
-        inputContainerStyle={styles.inputContainerStyle}
-        placeholder="Team, performer or venue"
-        onChangeText={handleChangeText}
-        value={query} />
-      {Object.keys(data).length !== 0 && (
-        <SearchResults data={data} />
-      )}
+      <SafeAreaView>
+        <StatusBar style="light" />
+        <SearchBar
+          containerStyle={styles.searchContainer}
+          inputContainerStyle={styles.inputContainerStyle}
+          placeholder="Team, performer or venue"
+          onChangeText={handleChangeText}
+          value={query} />
+        {Object.keys(data).length !== 0 && (
+          <SearchResults data={data} />
+        )}
+      </SafeAreaView>
     </View>
   )
 }
@@ -51,7 +56,6 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     flexDirection: 'row',
-    marginTop: 30,
     backgroundColor: '#000',
   },
   inputContainerStyle: {
